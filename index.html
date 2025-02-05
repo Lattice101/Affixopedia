@@ -18,35 +18,44 @@
       text-align: center;
       padding: 20px;
     }
+    /* --- BODY BACKGROUND (Parchment Style) --- */
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: url('background-texture.jpg') no-repeat center center;
+      background-size: cover;
+      background-attachment: fixed;
+      color: #3b2210; 
+      text-align: center;
+      padding: 20px;
+    }
 
-    /* Border Overlay */
+    /* --- BORDER OVERLAY IMAGE --- */
     .border-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      object-fit: cover;
-      pointer-events: none;
-      z-index: 1; /* Set lower so it’s behind content */
+      background: url('fancy-border.png') no-repeat center center;
+      background-size: cover;
+      pointer-events: none; /* Prevents clicks from being blocked */
+      z-index: 1000;
     }
 
-    /* Content */
     .content {
       position: relative;
-      z-index: 2; /* Set higher so it’s in front of the border */
+      z-index: 20;
     }
 
-    /* Heading Style */
+    /* --- HEADING STYLE --- */
     h1 {
       font-size: 2.5rem;
       margin-bottom: 20px;
-      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow for visibility */
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
       color: #f5f5f5;
-      position: relative;
-      z-index: 3; /* Ensure heading is on top */
     }
-  /* --- INPUT FIELD STYLING --- */
+
+    /* --- INPUT FIELD STYLING --- */
     input {
       width: 60%;
       max-width: 400px;
@@ -162,16 +171,3 @@
         resultDiv.innerHTML = '<p>No results found for this word.</p>';
       }
     }
-
-  <!-- PNG BORDER OVERLAY -->
-  <img src="fancy-border.png" alt="Decorative Border" class="border-overlay">
-
-  <div class="content">
-    <h1>'Root Word, Suffix, and Prefix Thesaurus'</h1>
-    <input type="text" id="wordInput" placeholder="Enter a word" />
-    <button onclick="searchWord()">Search</button>
-    <div id="results"></div>
-  </div>
-
-</body>
-</html>
