@@ -17,9 +17,21 @@
       position: relative; /* Ensures elements like the heading are above the border */
     }
 
+    /* --- STYLED BORDER FOR MAIN CONTENT --- */
+    .border-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      pointer-events: none;
+      z-index: -1; /* Keeps the border behind the content */
+    }
+
     /* --- HEADING STYLE --- */
     h1 {
-      font-family: 'Passion One', Regular 400; /* Different font for heading */
+      font-family: 'Cinzel', serif; /* Different font for heading */
       font-size: 2.5rem;
       margin-bottom: 20px;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
@@ -92,7 +104,7 @@
   <!-- Image for fancy border overlay -->
   <img src="fancy-border.png" class="border-overlay">
 
-  <h1>'ROOT WORD, SUFFIX, AND PREFIX THESAURUS'</h1>
+  <h1>'Root Word, Suffix, and Prefix Thesaurus'</h1>
   <input type="text" id="wordInput" placeholder="Enter a word" />
   <button onclick="searchWord()">Search</button>
 
