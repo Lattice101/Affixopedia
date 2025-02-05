@@ -15,7 +15,8 @@
     color: #3b2210; 
     text-align: center;
     padding: 20px;
-   <div class="border-overlay"></div> 
+    <img src="fancy-border.png" class="fancy-overlay">
+
 }
     /* --- STYLED BORDER FOR MAIN CONTENT --- */
 .border-overlay {
@@ -24,9 +25,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: url('fancy-border.png') no-repeat center center;
-  background-size: cover;
-  pointer-events: none; /* Prevents blocking clicks */
+  object-fit: cover;
+  pointer-events: none;
 }
 
 .content {
