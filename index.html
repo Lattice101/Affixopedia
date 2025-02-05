@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,12 +18,13 @@
     <script>
         let dictionary = [];
 
-        // Load dictionary.json
-        fetch("dictionary.json")
+        // Load dictionary.json (Corrected path)
+        fetch("./dictionary.json")  
             .then(response => response.json())
             .then(data => {
                 dictionary = data;
-            });
+            })
+            .catch(error => console.error("Error loading dictionary:", error));
 
         // Search function
         document.getElementById("searchBox").addEventListener("input", function() {
@@ -37,7 +37,7 @@
             filtered.forEach(entry => {
                 let div = document.createElement("div");
                 div.classList.add("entry");
-                div.innerHTML = `<strong>${entry.word}</strong> (${entry.type}) - ${entry.meaning}<br><i>Example: ${entry.example}</i>`;
+                div.innerHTML = `<strong>${entry.word}</strong> (${entry.type})<br><i>Example: ${entry.example}</i>`;
                 resultsDiv.appendChild(div);
             });
         });
