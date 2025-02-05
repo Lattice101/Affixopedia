@@ -41,23 +41,23 @@
     const wordData = {
       "unhappy": {
         affixes: ["none"],
-        breakdown: ["hap", "un"],
-        meaning: "not happy"
+        meaning: "not happy",
+        breakdown: ["hap", "un"]
       },
       "believe": {
         affixes: ["none"],
-        breakdown: ["bel", "ieve"],
-        meaning: "to accept as true"
+        meaning: "to accept as true",
+        breakdown: ["bel", "ieve"]
       },
       "rewrite": { 
         affixes: ["none"],
-        breakdown: ["re", "write"],
-        meaning: "to write again"
+        meaning: "to write again",
+        breakdown: ["re", "write"]
       },
       "prehistoric": {
         affixes: ["none"],
-        breakdown: ["pre", "historic"],
-        meaning: "before recorded history"
+        meaning: "before recorded history",
+        breakdown: ["pre", "historic"]
       },
       // Add more words and roots here
     };
@@ -74,8 +74,8 @@
         
         resultItem.innerHTML = `
           <h3>Word: ${word}</h3>
+          <p><strong>Affixes:</strong> ${result.affixes}</p>
           <p><strong>Meaning:</strong> ${result.meaning}</p>
-          <p><strong>Affixes:</strong> ${result.affixes.join}</p>
           <p><strong>Breakdown:</strong> ${result.breakdown.join(', ')}</p>
         `;
         
