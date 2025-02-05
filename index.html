@@ -1,39 +1,84 @@
-
-import json
-
-# Load the prefixes, roots, and suffixes data
-with open('word_parts.json', 'r') as file:
-    word_parts = json.load(file)
-
-def find_similar_meanings(word):
-    results = {
-        "prefixes": [],
-        "roots": [],
-        "suffixes": []
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prefix and Root Thesaurus</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f9f9f9;
     }
+    h1 {
+      color: #333;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+    }
+    #results {
+      margin-top: 20px;
+    }
+    .result-item {
+      margin: 10px 0;
+    }
+    .result-item h3 {
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Prefix and Root Thesaurus</h1>
+  <input type="text" id="wordInput" placeholder="Enter a word" />
+  <button onclick="searchWord()">Search</button>
 
-    for category, parts in word_parts.items():
-        for part, meaning in parts.items():
-            if part in word:
-                results[category].append((part, meaning))
+  <div id="results"></div>
 
-    return results
+  <script>
+    const wordData = {
+      "unhappy": {
+        roots: ["hap", "un"],
+        meaning: "not happy"
+      },
+      "believe": {
+        roots: ["bel", "ieve"],
+        meaning: "to accept as true"
+      },
+      "rewrite": {
+        roots: ["re", "write"],
+        meaning: "to write again"
+      },
+      "prehistoric": {
+        roots: ["pre", "historic"],
+        meaning: "before recorded history"
+      },
+      // Add more words and roots here
+    };
 
-def main():
-    print("Welcome to the Simple Word Part Thesaurus!")
-    word = input("Enter a word to search for similar meanings: ").strip().lower()
-    results = find_similar_meanings(word)
+    function searchWord() {
+      const word = document.getElementById('wordInput').value.toLowerCase();
+      const resultDiv = document.getElementById('results');
+      resultDiv.innerHTML = ''; // Clear previous results
 
-    if any(results.values()):
-        print("Found the following similar word parts:")
-        for category, matches in results.items():
-            if matches:
-                print(f"\n{category.capitalize()}: ")
-                for match in matches:
-                    print(f"- {match[0]}: {match[1]}")
-    else:
-        print("No similar word parts found.")
-
-if __name__ == "__main__":
-    main()
-
+      if (wordData[word]) {
+        const result = wordData[word];
+        const resultItem = document.createElement('div');
+        resultItem.classList.add('result-item');
+        
+        resultItem.innerHTML = `
+          <h3>Word: ${word}</h3>
+          <p><strong>Meaning:</strong> ${result.meaning}</p>
+          <p><strong>Roots and Prefixes:</strong> ${result.roots.join(', ')}</p>
+        `;
+        
+        resultDiv.appendChild(resultItem);
+      } else {
+        resultDiv.innerHTML = '<p>No results found for this word.</p>';
+      }
+    }
+  </script>
+</body>
+</html>
