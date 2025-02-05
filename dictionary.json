@@ -1,19 +1,17 @@
-[
-  {
-    "word": "anti-",
-    "type": "prefix",
-    "meaning": "against, opposite",
-    "example": "antibiotic, antifreeze"
+{
+  "prefixes": {
+    "bio": "life",
+    "geo": "earth",
+    "tele": "far"
   },
-  {
-    "word": "-ology",
-    "type": "suffix",
-    "meaning": "study of",
-    "example": "biology, geology"
+  "roots": {
+    "anthrop": "human",
+    "graph": "write",
+    "phon": "sound"
   },
-  {
-    "word": "bio-",
-    "type": "prefix",
-    "meaning": "life",
-    "example": "biology, biography"
+  "suffixes": {
+    "logy": "study of",
+    "phobia": "fear of",
+    "ism": "belief in"
   }
+}
