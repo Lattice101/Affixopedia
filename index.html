@@ -1,47 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prefix & Suffix Dictionary</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; }
-        input { width: 100%; padding: 8px; margin-bottom: 10px; }
-        .entry { padding: 10px; border-bottom: 1px solid #ddd; }
-    </style>
-</head>
-<body>
-    <h1>Prefix & Suffix Dictionary</h1>
-    <input type="text" id="searchBox" placeholder="Search for a prefix or suffix...">
-    <div id="results"></div>
 
-    <script>
-        let dictionary = [];
+import json
 
-        // Load dictionary.json (Corrected path)
-        fetch("./dictionary.json")  
-            .then(response => response.json())
-            .then(data => {
-                dictionary = data;
-            })
-            .catch(error => console.error("Error loading dictionary:", error));
+# Load the prefixes, roots, and suffixes data
+with open('word_parts.json', 'r') as file:
+    word_parts = json.load(file)
 
-        // Search function
-        document.getElementById("searchBox").addEventListener("input", function() {
-            let query = this.value.toLowerCase();
-            let resultsDiv = document.getElementById("results");
-            resultsDiv.innerHTML = "";
+def find_similar_meanings(word):
+    results = {
+        "prefixes": [],
+        "roots": [],
+        "suffixes": []
+    }
 
-            let filtered = dictionary.filter(entry => entry.word.includes(query));
+    for category, parts in word_parts.items():
+        for part, meaning in parts.items():
+            if part in word:
+                results[category].append((part, meaning))
 
-            filtered.forEach(entry => {
-                let div = document.createElement("div");
-                div.classList.add("entry");
-                div.innerHTML = `<strong>${entry.word}</strong> (${entry.type})<br><i>Example: ${entry.example}</i>`;
-                resultsDiv.appendChild(div);
-            });
-        });
-    </script>
-</body>
-</html>
+    return results
+
+def main():
+    print("Welcome to the Simple Word Part Thesaurus!")
+    word = input("Enter a word to search for similar meanings: ").strip().lower()
+    results = find_similar_meanings(word)
+
+    if any(results.values()):
+        print("Found the following similar word parts:")
+        for category, matches in results.items():
+            if matches:
+                print(f"\n{category.capitalize()}: ")
+                for match in matches:
+                    print(f"- {match[0]}: {match[1]}")
+    else:
+        print("No similar word parts found.")
+
+if __name__ == "__main__":
+    main()
 
