@@ -5,104 +5,104 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prefix and Root Thesaurus</title>
   <style>
-    
- /* --- BODY BACKGROUND (Parchment Style) --- */
+    /* --- BODY BACKGROUND (Parchment Style) --- */
     body {
-   font-family: 'Manrope', sans-serif; /* Classic-looking font */
-    background: url('background-texture.jpg'); /* Background texture */
-    background-size: cover;
-    background-attachment: fixed;
-    color: #3b2210; 
-    text-align: center;
-    padding: 20px;
-    <img src="fancy-border.png" class="fancy-overlay">
+      font-family: 'Manrope', sans-serif; /* Classic-looking font */
+      background: url('background-texture.jpg') no-repeat center center fixed; /* Background texture */
+      background-size: cover;
+      background-color: #f9f2e7; /* Fallback if image fails to load */
+      color: #3b2210; 
+      text-align: center;
+      padding: 20px;
+    }
 
-}
     /* --- STYLED BORDER FOR MAIN CONTENT --- */
-.border-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  pointer-events: none;
-}
+    .border-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      pointer-events: none;
+    }
 
-.content {
-    position: relative;
-    z-index: 20;
-}
-    
-/* --- HEADING STYLE --- */
+    .content {
+      position: relative;
+      z-index: 20;
+    }
 
+    /* --- HEADING STYLE --- */
     h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    color: #f5f5f5;
-}
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      color: #f5f5f5;
+    }
 
-/* --- INPUT FIELD STYLING --- */
-input {
-    width: 60%;
-    max-width: 400px;
-    padding: 10px;
-    font-size: 18px;
-    border-radius: 10px;
-    border: 2px solid #6d4c41;
-    background: #f9f2e7;
-    color: #3b2210;
-    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
-}
+    /* --- INPUT FIELD STYLING --- */
+    input {
+      width: 60%;
+      max-width: 400px;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: 2px solid #6d4c41;
+      background: #f9f2e7;
+      color: #3b2210;
+      box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-/* --- BUTTON STYLING --- */
-button {
-    padding: 12px 20px;
-    font-size: 18px;
-    border-radius: 10px;
-    border: 2px solid #6d4c41;
-    cursor: pointer;
-    background: #8d6e63;
-    color: white;
-    transition: 0.3s ease;
-}
+    /* --- BUTTON STYLING --- */
+    button {
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: 2px solid #6d4c41;
+      cursor: pointer;
+      background: #8d6e63;
+      color: white;
+      transition: 0.3s ease;
+    }
 
-button:hover {
-    background: #5d4037;
-    transform: scale(1.05);
-}
+    button:hover {
+      background: #5d4037;
+      transform: scale(1.05);
+    }
 
-/* --- RESULTS STYLING --- */
-#results {
-    margin-top: 30px;
-    text-align: left;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.2rem;
-    background: rgba(255, 248, 220, 0.8); /* Slight transparency */
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-}
+    /* --- RESULTS STYLING --- */
+    #results {
+      margin-top: 30px;
+      text-align: left;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1.2rem;
+      background: rgba(255, 248, 220, 0.8); /* Slight transparency */
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
 
-.result-item {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 10px;
-    border-radius: 10px;
-    margin: 10px 0;
-    border-left: 4px solid #6d4c41;
-    transition: 0.3s ease-in-out;
-}
+    .result-item {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 10px;
+      border-radius: 10px;
+      margin: 10px 0;
+      border-left: 4px solid #6d4c41;
+      transition: 0.3s ease-in-out;
+    }
 
-.result-item:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(1.02);
-}   
+    .result-item:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: scale(1.02);
+    }
   </style>
 </head>
 <body>
+  <!-- Image for fancy border overlay -->
+  <img src="fancy-border.png" class="border-overlay">
+
   <h1>'Root Word, Suffix, and Prefix Thesaurus'</h1>
   <input type="text" id="wordInput" placeholder="Enter a word" />
   <button onclick="searchWord()">Search</button>
@@ -112,22 +112,22 @@ button:hover {
   <script>
     const wordData = {
       "unhappy": {
-        affixes: "none",
+        affixes: "Prefix: un",
         meaning: "not happy",
-        breakdown: ["hap", "un"]
+        breakdown: ["un", "happy"]
       },
       "believe": {
-        affixes: "none",
+        affixes: "Suffix: ieve",
         meaning: "to accept as true",
         breakdown: ["bel", "ieve"]
       },
       "rewrite": { 
-        affixes: "none",
+        affixes: "Prefix: re",
         meaning: "to write again",
         breakdown: ["re", "write"]
       },
       "prehistoric": {
-        affixes: "none",
+        affixes: "Prefix: pre",
         meaning: "before recorded history",
         breakdown: ["pre", "historic"]
       },
@@ -144,12 +144,12 @@ button:hover {
         const resultItem = document.createElement('div');
         resultItem.classList.add('result-item');
         
-        resultItem.innerHTML = 
+        resultItem.innerHTML = `
           <h3>Word: ${word}</h3>
           <p><strong>Affixes:</strong> ${result.affixes}</p>
           <p><strong>Meaning:</strong> ${result.meaning}</p>
           <p><strong>Breakdown:</strong> ${result.breakdown.join(', ')}</p>
-        ;
+        `;
         
         resultDiv.appendChild(resultItem);
       } else {
