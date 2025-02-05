@@ -17,12 +17,21 @@
     padding: 20px;
 }
     /* --- STYLED BORDER FOR MAIN CONTENT --- */
-    
-.border-container {
+.fancy-border {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background: url('fancy-border.png') no-repeat center;
-    background-size: contain;  /* Keeps proportions */
-    background-color: transparent;  /* Ensures transparency is preserved */
-    padding: 30px;
+    background-size: cover;
+    pointer-events: none; /* Allows users to interact with the content below */
+    z-index: 10; /* Keeps it above other elements */
+}
+
+.content {
+    position: relative;
+    z-index: 20;
 }
     
 /* --- HEADING STYLE --- */
